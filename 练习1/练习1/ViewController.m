@@ -27,15 +27,22 @@
     [super viewDidLoad];
     //设置间距
     
-    CGFloat costantLen = (self.view.bounds.size.width - self.width.constant *4) / 5;
-    NSLog(@"%f", costantLen);
-    self.constant.constant = costantLen;
-    self.constant1.constant = costantLen;
-    self.constation2.constant = costantLen;
-    self.constant3.constant = costantLen;
-    self.constant4.constant = costantLen;
-
+    
+   //设置约束
+    [self setupConstant];
 }
 
+- (void)setupConstant
+{
+    CGFloat costantLen = (self.view.bounds.size.width - self.width.constant *4) / 5;
+    NSLog(@"%f", costantLen);
+
+    NSMutableArray *array = [NSMutableArray arrayWithObjects:self.constant, self.constant1, self.constation2, self.constant3, self.constant4, nil];
+    for (int i = 0; i < array.count ; i++ ) {
+        NSLayoutConstraint *cos = array[i];
+        cos.constant = costantLen;
+    }
+
+}
 
 @end
